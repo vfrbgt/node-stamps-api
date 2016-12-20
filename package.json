@@ -1,0 +1,23 @@
+{
+  "name": "node-stamps-api",
+  "version": "0.0.1",
+  "description": "Node.js client for with stamps.com's API.",
+  "keywords": [
+    "stamps.com",
+    "postage",
+    "shipping",
+    "label",
+    "tracking"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --no-exit --timeout 30000"
+  },
+  "dependencies": {
+    "soap": "~0.18.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  }
+}
