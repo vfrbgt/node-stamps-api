@@ -31,9 +31,9 @@ options - is a object with fields
 
 ```json
 {
-    id: 'your_integrations_stamps_id',
-    username: 'you_stmaps_username',
-    password: 'you_stmaps_password'
+    "id": "your_integrations_stamps_id",
+    "username": "you_stmaps_username",
+    "password": "you_stmaps_password"
 }
 ```
 
