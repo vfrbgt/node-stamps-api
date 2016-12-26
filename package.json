@@ -1,5 +1,5 @@
 {
-  "name": "node-stamps-api",
+  "name": "stamps-api",
   "version": "0.0.1",
   "description": "Node.js client for with stamps.com's API.",
   "keywords": [
@@ -19,5 +19,18 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vfrbgt/node-stamps-api.git"
+  },
+  "author": "Bogdan <seclan@mail.ru> (http://bogdanonline.com/en)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vfrbgt/node-stamps-api/issues"
+  },
+  "homepage": "https://github.com/vfrbgt/node-stamps-api#readme"
 }
