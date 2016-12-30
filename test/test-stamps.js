@@ -38,60 +38,71 @@ var rate = {
     }
 };
 
+var envelopeRate = {
+    FromZIPCode: "95060",
+    ToZIPCode: "95060",
+    ServiceType: "US-FC",
+    PrintLayout: "Envelope9",
+    WeightLb: 0,
+    WeightOz: 1,
+    PackageType: "Letter",
+    ShipDate: new Date().toISOString().split('T')[0],
+    RectangularShaped: true
+};
+
 var trackNumber = '9400111899564483465995';
 
-describe('Test', function() {
-    describe('#auth', function() {
-        it('check auth data', function() {
-            should.exist(options.id);
-            should.exist(options.username);
-            should.exist(options.password);
-        });
-    })
+describe('#auth', function () {
+    it('check auth data', function () {
+        should.exist(options.id);
+        should.exist(options.username);
+        should.exist(options.password);
+    });
 });
 
-describe('Stamps', function() {
-    describe('#create', function() {
-        it('should create client', function() {
-            should.exist(Stamps);
-        });
-    })
+describe('#create', function () {
+    it('should create client', function () {
+        should.exist(Stamps);
+    });
 });
 
-describe('Stamps', function() {
-    describe('#AuthenticateUser()', function() {
-        it('should exist token', function(done) {
-            Stamps.connect().then(() => {
-                Stamps.auth(options).then(() => {
-                    should.exist(Stamps.token);
-                    done();
-                });
+describe('#AuthenticateUser()', function () {
+    it('should exist token', function (done) {
+        Stamps.connect({isDev: true}).then(() => {
+            Stamps.auth(options).then(() => {
+                should.exist(Stamps.token);
+                done();
+            }, (err) => {
+                console.log(err);
             });
         });
     });
 });
 
-describe('Stamps', function() {
-    describe('#TrackShipment()', function() {
-        it('should track shipment', function(done) {
-            Stamps.connect().then(() => {
-                Stamps.request('TrackShipment', {
-                    TrackingNumber: trackNumber
-                }).then(function(trackingResponse) {
-                    should.exist(trackingResponse);
-                    should.exist(trackingResponse.TrackingEvents);
-                    should.exist(trackingResponse.TrackingEvents.TrackingEvent);
-                    done();
-                });
+describe('#TrackShipment()', function () {
+    it('should track shipment', function (done) {
+        Stamps.connect({isDev: true}).then(() => {
+            Stamps.request('TrackShipment', {
+                TrackingNumber: trackNumber
+            }).then(function (trackingResponse) {
+                should.exist(trackingResponse);
+                should.exist(trackingResponse.TrackingEvents);
+                should.exist(trackingResponse.TrackingEvents.TrackingEvent);
+                done();
+            }, function(err) {
+                let isNoRecord = err.root.Envelope.Body.Fault.faultstring.indexOf('USPS Desc:No record of that item');
+                if(isNoRecord === -1) {
+                    console.log(err.root.Envelope.Body);
+                }
+                should.notEqual(isNoRecord, -1);
+                done();
             });
         });
     });
 });
 
-
-
-describe('#createTestIndicium()', function() {
-    it('should create test indicum', function(done) {
+describe('#createTestIndicium()', function () {
+    it('should create test indicum', function (done) {
         Stamps.request('CreateIndicium', {
             'Rate': rate,
             'From': from,
@@ -99,6 +110,22 @@ describe('#createTestIndicium()', function() {
             'SampleOnly': true
         }, true).then((indicium) => {
             should.exist(indicium);
+            done();
+        });
+    });
+});
+
+describe('#createEnvelopeIndicium()', function () {
+    it('should create test Envelope Indicium', function (done) {
+        Stamps.request('CreateEnvelopeIndicium', {
+            'Rate': envelopeRate,
+            'From': from,
+            'To': to
+        }, true).then((indiciumEnvelope) => {
+            should.exist(indiciumEnvelope);
+            done();
+        }, (err) => {
+            console.log(err);
             done();
         });
     });
