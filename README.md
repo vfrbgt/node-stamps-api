@@ -27,7 +27,18 @@ Stamps.connect().then(() => {
 });
 ```
 
-options - is a object with fields
+* options - is a object with fields
+* connect - this function have parameter type of object with property isDev for enable dev mode
+
+Exmaple:
+
+```javascript
+Stamps.connect({isDev: true}).then(() => {
+    Stamps.auth(options).then(() => {
+    	console.log(options);
+    });
+});
+```
 
 ```json
 {
