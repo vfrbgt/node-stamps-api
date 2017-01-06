@@ -73,7 +73,8 @@ describe('#AuthenticateUser()', function () {
                 should.exist(Stamps.token);
                 done();
             }, (err) => {
-                console.log(err);
+                should.not().exist(err);
+                done();
             });
         });
     });
@@ -91,9 +92,6 @@ describe('#TrackShipment()', function () {
                 done();
             }, function(err) {
                 let isNoRecord = err.root.Envelope.Body.Fault.faultstring.indexOf('USPS Desc:No record of that item');
-                if(isNoRecord === -1) {
-                    console.log(err.root.Envelope.Body);
-                }
                 should.notEqual(isNoRecord, -1);
                 done();
             });
@@ -111,6 +109,25 @@ describe('#createTestIndicium()', function () {
         }, true).then((indicium) => {
             should.exist(indicium);
             done();
+        }, (err) => {
+            should.not.exists(err);
+            done();
+        });
+    });
+});
+
+describe('#getRates()', function() {
+    it('should get rates', function(done) {
+        Stamps.request('GetRates', {
+            'Rate': envelopeRate
+        }).then((rates) => {
+            should.exist(rates);
+            should.exist(rates.Rates);
+            should.exist(rates.Rates.Rate);
+            done();
+        }, (err) => {
+            should.not.exists(err);
+            done();
         });
     });
 });
@@ -125,7 +142,7 @@ describe('#createEnvelopeIndicium()', function () {
             should.exist(indiciumEnvelope);
             done();
         }, (err) => {
-            console.log(err);
+            should.not.exist(err);
             done();
         });
     });
