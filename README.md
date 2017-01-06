@@ -13,7 +13,7 @@ Sign up with [stamps.com developer program](http://developer.stamps.com/develope
 Create client for work with Stamps api.
 
 ```javascript
-var Stamps = require('node-stamps-api');
+var Stamps = require('stamps-api');
 ```
 
 ###Auth client
