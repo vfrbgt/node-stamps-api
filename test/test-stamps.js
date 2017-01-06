@@ -50,6 +50,10 @@ var envelopeRate = {
     RectangularShaped: true
 };
 
+process.on('unhandledRejection', (reason, p) => {
+    console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+});
+
 var trackNumber = '9400111899564483465995';
 
 describe('#auth', function () {
@@ -70,7 +74,7 @@ describe('#AuthenticateUser()', function () {
     it('should exist token', function (done) {
         Stamps.connect({isDev: true}).then(() => {
             Stamps.auth(options).then(() => {
-                should.exist(Stamps.token);
+                should.exist(Stamps.Credentials);
                 done();
             }, (err) => {
                 should.not().exist(err);

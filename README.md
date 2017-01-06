@@ -28,6 +28,7 @@ Stamps.connect().then(() => {
 ```
 
 * options - is a object with fields
+* auth function has 2 parameter type of bool, if his true make request for get auth token from stamps else use creaditials as auth data(by default false)
 * connect - this function have parameter type of object with property isDev for enable dev mode
 
 Exmaple:
