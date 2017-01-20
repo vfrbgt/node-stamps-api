@@ -1,6 +1,8 @@
 #Stamps API 
 [![NPM version](https://img.shields.io/npm/v/license-icons.svg)](https://www.npmjs.org/package/license-icons)
-[![Downloads][downloads-image]][npm-url]
+<a href="https://www.npmjs.com/package/pm2">
+  <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/pm2.svg?style=flat-square"/>
+</a>
 
 > Stamps.com node.js client
 
