@@ -1,4 +1,8 @@
-#Stamps.com node.js client [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
+#Stamps API 
+[![NPM version](https://img.shields.io/npm/v/license-icons.svg)](https://www.npmjs.org/package/license-icons)
+[![Downloads][downloads-image]][npm-url]
+
+> Stamps.com node.js client
 
 A client for stamps.com API.
 
