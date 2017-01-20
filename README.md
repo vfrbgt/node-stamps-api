@@ -1,4 +1,4 @@
-#Stamps.com node.js client
+#Stamps.com node.js client [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
 
 A client for stamps.com API.
 
