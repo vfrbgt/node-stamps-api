@@ -38,6 +38,20 @@ var rate = {
     }
 };
 
+var notSequenceRate = {
+    ToZIPCode: "95060",
+    AddOns: {
+        AddOnV7: [
+            {AddOnType: 'US-A-DC'}
+        ]
+    },
+    WeightLb: 0.5,
+    PackageType: "Package",
+    FromZIPCode: "95060",
+    ServiceType: "US-PM",
+    ShipDate: new Date().toISOString().split('T')[0]
+};
+
 var envelopeRate = {
     FromZIPCode: "95060",
     ToZIPCode: "95060",
@@ -108,6 +122,23 @@ describe('#createTestIndicium()', function () {
         Stamps.request('CreateIndicium', {
             'Rate': rate,
             'From': from,
+            'To': to,
+            'SampleOnly': true
+        }, true).then((indicium) => {
+            should.exist(indicium);
+            done();
+        }, (err) => {
+            should.not.exists(err);
+            done();
+        });
+    });
+});
+
+describe('#createNotSequenceTestIndicium()', function () {
+    it('should create test indicum', function (done) {
+        Stamps.request('CreateIndicium', {
+            'From': from,
+            'Rate': notSequenceRate,
             'To': to,
             'SampleOnly': true
         }, true).then((indicium) => {
