@@ -14,7 +14,7 @@
     "test": "mocha --no-exit --timeout 30000"
   },
   "dependencies": {
-    "soap": "~0.18.0"
+    "soap": "vpulim/node-soap#5dbcb1d715843310c799419f260e0962722cd2fb"
   },
   "devDependencies": {
     "mocha": "*",
