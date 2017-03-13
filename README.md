@@ -67,9 +67,6 @@ Stamps.request('TrackShipment', {
 });
 ```
 
-#Attention!!!
-Follow the order of the fields.
-
 #Run test
 
 Before run test set env variables you stamps auth data:
