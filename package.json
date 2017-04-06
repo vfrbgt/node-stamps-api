@@ -1,6 +1,6 @@
 {
   "name": "stamps-api",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Node.js client for with stamps.com's API.",
   "keywords": [
     "stamps.com",
